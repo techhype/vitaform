@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import CountrySelect from './CountrySelect'
+import '../css/Form.css'
 
 const Form = () => {
   const [firstName, setFirstName] = useState()
@@ -14,88 +15,100 @@ const Form = () => {
   const [height, setHeight] = useState()
   const [weight, setWeight] = useState()
 
+  const [showDetails, setShowDetails] = useState(0)
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setShowDetails(1)
     console.log('Form Submitted')
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="First Name">First Name</label>
-      <input
-        type='text'
-        name='First Name'
-        value={firstName}
-        onChange={(e) => setFirstName(e.target.value)}
-        required/>
-      <label htmlFor="Last Name">Last Name</label>
-      <input
-        type='text'
-        name='Last Name'
-        value={lastName}
-        onChange={(e) => setLastName(e.target.value)}
-        required/>
-      <label htmlFor="Middle Name">Middle Name</label>
-      <input
-        type='text'
-        name='Middle Name'
-        value={middleName}
-        onChange={(e) => setMiddleName(e.target.value)}
-        required/>
-      <label htmlFor="Email">Email</label>
-      <input
-        type='email'
-        name='Email'
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-        required/>
-      <label htmlFor="Address">Address</label>
-      <input
-        type='text'
-        name='Address'
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-        required/>
-      <CountrySelect country={country} setCountry={setCountry}/>
-      <label htmlFor="State">State</label>
-      <input
-        type='text'
-        name='State'
-        value={state}
-        onChange={(e) => setState(e.target.value)}
-        required/>
-      <label htmlFor="Zip Code">Zip Code</label>
-      <input
-        type='text'
-        name='Zip Code'
-        value={zipcode}
-        onChange={(e) => setZipCode(e.target.value)}
-        required/>
-      <label htmlFor="Phone Number">Phone Number</label>
-      <input
-        type='text'
-        name='Phone Number'
-        value={phonenumber}
-        onChange={(e) => setPhoneNumber(e.target.value)}
-        required/>
-      <label htmlFor="Height">Height</label>
-      <input
-        type='text'
-        name='Height'
-        value={height}
-        onChange={(e) => setHeight(e.target.value)}
-        required/>
-      <label htmlFor="Weight">Weight</label>
-      <input
-        type='text'
-        name='Weight'
-        value={weight}
-        onChange={(e) => setWeight(e.target.value)}
-        required/>
-      <input type='submit' value='Submit'/>
-    </form>
+    <>
+      <h2>Vita Form</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
+        <input
+          type='text'
+          name='firstName'
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+          required />
+        <label htmlFor="lastName">Last Name</label>
+        <input
+          type='text'
+          name='lastName'
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+          required />
+        <label htmlFor="middleName">Middle Name</label>
+        <input
+          type='text'
+          name='middleName'
+          value={middleName}
+          onChange={(e) => setMiddleName(e.target.value)}
+          required />
+        <label htmlFor="Email">Email</label>
+        <input
+          type='email'
+          name='Email'
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required />
+        <label htmlFor="address">Address</label>
+        <input
+          type='text'
+          name='address'
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          required />
+        <CountrySelect country={country} setCountry={setCountry} state={state} setState={setState} />
+        <label htmlFor="zipCode">Zip Code</label>
+        <input
+          type='text'
+          name='zipCode'
+          value={zipcode}
+          onChange={(e) => setZipCode(e.target.value)}
+          required />
+        <label htmlFor="phoneNumber">Phone Number</label>
+        <input
+          type='text'
+          name='phoneNumber'
+          value={phonenumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+          required />
+        <label htmlFor="height">Height</label>
+        <input
+          type='text'
+          name='height'
+          value={height}
+          onChange={(e) => setHeight(e.target.value)}
+          required />
+        <label htmlFor="weight">Weight</label>
+        <input
+          type='text'
+          name='weight'
+          value={weight}
+          onChange={(e) => setWeight(e.target.value)}
+          required />
+        <input type='submit' value='Submit' />
+        {
+          showDetails===1 &&
+          <div>
+            Firt Name: {firstName}
+            Last Name : {lastName}
+            Middle Name : {middleName}
+            Address : `{address},{state},{zipcode},{country}`
+            Email : {email}
+            Phone Number: {phonenumber}
+            Height : {height}
+            Weight: {weight}
+          </div>
+        }
+      </form>
+    </>
   )
 }
 

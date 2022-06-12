@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const CountrySelect = ({ country, setCountry }) => {
+const CountrySelect = ({ country, setCountry, state, setState }) => {
 
   const [countries, setCountries] = useState([])
   const [states, setStates] = useState([])
@@ -48,7 +48,7 @@ const CountrySelect = ({ country, setCountry }) => {
       <label htmlFor="Country">Country</label>
       <select
         onChange = {(e) => setCountry(e.target.value)}
-        //value={country}
+        value={country}
         required>
         <option defaultValue value=''>  select an option  </option>
         {countries.map((allCountries, key) => {
@@ -60,8 +60,8 @@ const CountrySelect = ({ country, setCountry }) => {
         country === 'United States' ?
           (
             <select
-            //onChange = {(e) => setState(e.target.value)}
-            //value={state}
+              onChange = {(e) => setState(e.target.value)}
+              value={state}
               required>
               <option defaultValue value=''>  select an option  </option>
               {states.map((allStates, key) => {
@@ -74,8 +74,8 @@ const CountrySelect = ({ country, setCountry }) => {
             <input
               type='text'
               name='State'
-              //value={state}
-              //onChange={(e) => setState(e.target.value)}
+              value={state}
+              onChange={(e) => setState(e.target.value)}
               required/>
           )
       }
