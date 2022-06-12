@@ -1,19 +1,21 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const CountrySelect = ({ country, setCountry, state, setState }) => {
+const CountrySelect = (props) => {
 
+  const { country, setCountry, state, setState, setCountryCode } = props
   const [countries, setCountries] = useState([])
   const [states, setStates] = useState([])
 
   useEffect(() => {
     fetchCountryData()
-    console.log(countries,country)
   },[])
 
   useEffect(() => {
     if(country==='United States')
       fetchStateData()
+    if(country)
+      fetchCountryCode()
   },[country])
 
   const fetchCountryData = async () => {
@@ -40,6 +42,23 @@ const CountrySelect = ({ country, setCountry, state, setState }) => {
       })
       .catch((error) => {
         console.log('Error while fetching states API',error)
+      })
+  }
+
+  const fetchCountryCode = () => {
+    const body = JSON.stringify({ country: country })
+    var options = {
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    }
+    axios.post('https://countriesnow.space/api/v0.1/countries/iso', body, options)
+      .then((getResponse) => {
+        console.log(getResponse.data.data.Iso2)
+        setCountryCode(getResponse.data.data.Iso2.toLowerCase())
+      })
+      .catch((error) => {
+        console.log('Error while fetching country codes API',error)
       })
   }
 

@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import PhoneInput from 'react-phone-input-2'
+import 'react-phone-input-2/lib/style.css'
 import CountrySelect from './CountrySelect'
 import '../css/Form.css'
 
@@ -7,7 +9,8 @@ const Form = () => {
   const [lastName, setLastName] = useState()
   const [middleName, setMiddleName] = useState()
   const [address, setAddress] = useState()
-  const [country, setCountry] = useState([])
+  const [country, setCountry] = useState()
+  const [countryCode, setCountryCode] = useState()
   const [state, setState] = useState()
   const [zipcode, setZipCode] = useState()
   const [email, setEmail] = useState()
@@ -64,7 +67,9 @@ const Form = () => {
           value={address}
           onChange={(e) => setAddress(e.target.value)}
           required />
-        <CountrySelect country={country} setCountry={setCountry} state={state} setState={setState} />
+        <CountrySelect country={country} setCountry={setCountry}
+          state={state} setState={setState}
+          setCountryCode={setCountryCode}  />
         <label htmlFor="zipCode">Zip Code</label>
         <input
           type='text'
@@ -73,12 +78,12 @@ const Form = () => {
           onChange={(e) => setZipCode(e.target.value)}
           required />
         <label htmlFor="phoneNumber">Phone Number</label>
-        <input
-          type='text'
-          name='phoneNumber'
+        <PhoneInput
+          country={countryCode}
           value={phonenumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-          required />
+          onChange={(phone) => setPhoneNumber(phone)}
+          disableDropdown
+        />
         <label htmlFor="height">Height</label>
         <input
           type='text'
