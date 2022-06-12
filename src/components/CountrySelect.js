@@ -8,8 +8,15 @@ const CountrySelect = (props) => {
   const [states, setStates] = useState([])
 
   useEffect(() => {
-    fetchCountryData()
+    if(!localStorage['countries'])
+      fetchCountryData()
+    else
+      setCountries(JSON.parse(localStorage.getItem('countries')))
   },[])
+
+  useEffect(() => {
+    localStorage.setItem('countries', JSON.stringify(countries))
+  },[countries])
 
   useEffect(() => {
     if(country==='United States')
@@ -18,7 +25,7 @@ const CountrySelect = (props) => {
       fetchCountryCode()
   },[country])
 
-  const fetchCountryData = async () => {
+  const fetchCountryData = () => {
     axios.get('https://countriesnow.space/api/v0.1/countries')
       .then((getResponse) => {
         getResponse.data.data.forEach((x) => {setCountries(countries => [...countries, x.country])})

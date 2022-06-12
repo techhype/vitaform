@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import CountrySelect from './CountrySelect'
+import FormInput from './FormInput'
 import '../css/Form.css'
 
 const Form = () => {
@@ -32,51 +33,15 @@ const Form = () => {
     <>
       <h2>Vita Form</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          type='text'
-          name='firstName'
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          required />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          type='text'
-          name='lastName'
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          required />
-        <label htmlFor="middleName">Middle Name</label>
-        <input
-          type='text'
-          name='middleName'
-          value={middleName}
-          onChange={(e) => setMiddleName(e.target.value)}
-          required />
-        <label htmlFor="Email">Email</label>
-        <input
-          type='email'
-          name='Email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required />
-        <label htmlFor="address">Address</label>
-        <input
-          type='text'
-          name='address'
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-          required />
+        <FormInput label='First Name' type='text' name='firstName' value={firstName} setValue={setFirstName} />
+        <FormInput label='Last Name' type='text' name='lastName' value={lastName} setValue={setLastName} />
+        <FormInput label='Middle Name' type='text' name='middleName' value={middleName} setValue={setMiddleName} />
+        <FormInput label='Email' type='email' name='email' value={email} setValue={setEmail} />
+        <FormInput label='Address' type='text' name='address' value={address} setValue={setAddress} />
         <CountrySelect country={country} setCountry={setCountry}
           state={state} setState={setState}
           setCountryCode={setCountryCode}  />
-        <label htmlFor="zipCode">Zip Code</label>
-        <input
-          type='text'
-          name='zipCode'
-          value={zipcode}
-          onChange={(e) => setZipCode(e.target.value)}
-          required />
+        <FormInput label='Zip Code' type='text' name='zipcode' value={zipcode} setValue={setZipCode} />
         <label htmlFor="phoneNumber">Phone Number</label>
         <PhoneInput
           country={countryCode}
@@ -84,20 +49,8 @@ const Form = () => {
           onChange={(phone) => setPhoneNumber(phone)}
           disableDropdown
         />
-        <label htmlFor="height">Height</label>
-        <input
-          type='text'
-          name='height'
-          value={height}
-          onChange={(e) => setHeight(e.target.value)}
-          required />
-        <label htmlFor="weight">Weight</label>
-        <input
-          type='text'
-          name='weight'
-          value={weight}
-          onChange={(e) => setWeight(e.target.value)}
-          required />
+        <FormInput label='Height' type='number' name='height' value={height} setValue={setHeight} />
+        <FormInput label='Weight' type='number' name='weight' value={weight} setValue={setWeight} />
         <input type='submit' value='Submit' />
         {
           showDetails===1 &&
