@@ -5,11 +5,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
+  background: #f4f7f8;
+  border-radius: 8px;
 }
 
 .formContainer{
   width: 60%;
-  margin: 20px 20%;
+  margin: 50px 20%;
+  
 }
 
 .form-title{
@@ -27,6 +31,7 @@
   display: flex;
   flex-direction: column;
   margin: 20px 20px;
+  width: 300px !important;
 }
 
 .inputLabel{
@@ -34,6 +39,7 @@
   margin-bottom: 5px;
   display: block;
 }
+
 
 .textInput{
   padding: 7px 10px;
@@ -54,7 +60,6 @@ input[type=number]::-webkit-outer-spin-button {
 
 .react-tel-input{
   margin-top: 5px !important;
-  width: 200px !important;
 }
 
 .submitButton {
@@ -66,5 +71,5 @@ input[type=number]::-webkit-outer-spin-button {
   padding: 8px 10px;
   border: 0;
   border-radius: 2px;
-  transition: all 150ms ease-out;
+  margin-bottom: 50px;
 }

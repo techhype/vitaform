@@ -6,12 +6,10 @@ This project was created with React.js as Frontend
 
 Run the following commands to download and deply React.js App
 
-  `
     $ git clone https://github.com/techhype/vitaform.git
     $ cd vitaform
     $ npm install
     $ npm start
-  `
 
 ## Available Scripts
 
