@@ -1,0 +1,35 @@
+.c-card>* {
+  font-size: 18px;
+}
+
+.c-card {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 400px;
+  flex-shrink: 0;
+  flex-grow: 0;
+  max-width: 100%;
+  background-color: #fff;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 1rem;
+
+}
+
+.card-body {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.2rem;
+  line-height: 1.33;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+.card-intro {
+  margin-top: 0.75rem;
+  line-height: 1.5;
+  font-weight: 400;
+}

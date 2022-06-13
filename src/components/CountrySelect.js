@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
+import '../css/Form.css'
 
 const CountrySelect = (props) => {
 
@@ -71,40 +72,47 @@ const CountrySelect = (props) => {
 
   return (
     <>
-      <label htmlFor="Country">Country</label>
-      <select
-        onChange = {(e) => setCountry(e.target.value)}
-        value={country}
-        required>
-        <option defaultValue value=''>  select an option  </option>
-        {countries.map((allCountries, key) => {
-          return <option key={key} value={allCountries}>{allCountries}</option>
-        })}
-      </select>
-      <label htmlFor="State">State</label>
-      {
-        country === 'United States' ?
-          (
-            <select
-              onChange = {(e) => setState(e.target.value)}
-              value={state}
-              required>
-              <option defaultValue value=''>  select an option  </option>
-              {states.map((allStates, key) => {
-                return <option key={key} value={allStates}>{allStates}</option>
-              })
-              }
-            </select>
-          ) :
-          (
-            <input
-              type='text'
-              name='State'
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              required/>
-          )
-      }
+      <div className='inputContainer'>
+        <label className='inputLabel' htmlFor="Country">Country</label>
+        <select
+          className='selectInput'
+          onChange = {(e) => setCountry(e.target.value)}
+          value={country}
+          required>
+          <option defaultValue value=''>  select an option  </option>
+          {countries.map((allCountries, key) => {
+            return <option key={key} value={allCountries}>{allCountries}</option>
+          })}
+        </select>
+      </div>
+      <div className='inputContainer'>
+        <label className='inputLabel' htmlFor="State">State</label>
+        {
+          country === 'United States' ?
+            (
+              <select
+                className='selectInput'
+                onChange = {(e) => setState(e.target.value)}
+                value={state}
+                required>
+                <option defaultValue value=''>  select an option  </option>
+                {states.map((allStates, key) => {
+                  return <option key={key} value={allStates}>{allStates}</option>
+                })
+                }
+              </select>
+            ) :
+            (
+              <input
+                className='textInput'
+                type='text'
+                name='State'
+                value={state}
+                onChange={(e) => setState(e.target.value)}
+                required/>
+            )
+        }
+      </div>
     </>
   )
 }

@@ -4,6 +4,7 @@ import 'react-phone-input-2/lib/style.css'
 import CountrySelect from './CountrySelect'
 import FormInput from './FormInput'
 import '../css/Form.css'
+import '../css/card.css'
 
 const Form = () => {
   const [firstName, setFirstName] = useState()
@@ -30,9 +31,9 @@ const Form = () => {
   }
 
   return (
-    <>
-      <h2>Vita Form</h2>
-      <form onSubmit={handleSubmit}>
+    <div className='formContainer'>
+      <h2 className='form-title'>VitaForm</h2>
+      <form id='form' onSubmit={handleSubmit}>
         <FormInput label='First Name' type='text' name='firstName' value={firstName} setValue={setFirstName} />
         <FormInput label='Last Name' type='text' name='lastName' value={lastName} setValue={setLastName} />
         <FormInput label='Middle Name' type='text' name='middleName' value={middleName} setValue={setMiddleName} />
@@ -42,31 +43,37 @@ const Form = () => {
           state={state} setState={setState}
           setCountryCode={setCountryCode}  />
         <FormInput label='Zip Code' type='text' name='zipcode' value={zipcode} setValue={setZipCode} />
-        <label htmlFor="phoneNumber">Phone Number</label>
-        <PhoneInput
-          country={countryCode}
-          value={phonenumber}
-          onChange={(phone) => setPhoneNumber(phone)}
-          disableDropdown
-        />
-        <FormInput label='Height' type='number' name='height' value={height} setValue={setHeight} />
-        <FormInput label='Weight' type='number' name='weight' value={weight} setValue={setWeight} />
-        <input type='submit' value='Submit' />
+        <div className='inputContainer'>
+          <label className='formLabel' htmlFor="phoneNumber">Phone Number</label>
+          <PhoneInput
+            country={countryCode}
+            value={phonenumber}
+            onChange={(phone) => setPhoneNumber(phone)}
+          />
+        </div>
+        <FormInput label='Height (Ft/inches)' type='number' name='height' value={height} setValue={setHeight} />
+        <FormInput label='Weight (kgs)' type='number' name='weight' value={weight} setValue={setWeight} />
+        <input className='submitButton' type='submit' value='Submit' />
         {
           showDetails===1 &&
-          <div>
-            Firt Name: {firstName}
-            Last Name : {lastName}
-            Middle Name : {middleName}
-            Address : `{address},{state},{zipcode},{country}`
-            Email : {email}
-            Phone Number: {phonenumber}
-            Height : {height}
-            Weight: {weight}
+          <div className='c-card'>
+            <div className='card-body'>
+              <div className="card-title">Submitted Form Details</div>
+              <>
+                <div className="card-intro">Firt Name: {firstName}</div>
+                <div className="card-intro">Last Name: {lastName}</div>
+                <div className="card-intro">Middle Name: {middleName}</div>
+                <div className="card-intro">Address: {address},{state},{zipcode},{country}</div>
+                <div className="card-intro">Email: {email}</div>
+                <div className="card-intro">Phone Number: {phonenumber}</div>
+                <div className="card-intro">Height: {height}</div>
+                <div className="card-intro">Weight: {weight}</div>
+              </>
+            </div>
           </div>
         }
       </form>
-    </>
+    </div>
   )
 }
 
