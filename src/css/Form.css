@@ -1,16 +1,70 @@
-form{
+@import url('https://fonts.googleapis.com/css2?family=Francois+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+
+#form{
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  margin: 40px;
-  padding: 0;
 }
 
-input{
-  margin: 4px 0 20px 0;
-  width: 20%;
-  height: 10%;
+.formContainer{
+  width: 60%;
+  margin: 20px 20%;
+}
+
+.form-title{
+  width: fit-content;
+  text-align: center;
+  font-family: 'Francois One', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  font-weight: 700;
+  margin: 0 auto;
+  border-bottom: 4px solid #31d47d;
+}
+
+.inputContainer{
   display: flex;
   flex-direction: column;
+  margin: 20px 20px;
+}
+
+.inputLabel{
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.textInput{
+  padding: 7px 10px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.selectInput{
+  font-family: 'Source Sans Pro', sans-serif;
+  padding: 7px 10px;
+}
+
+.react-tel-input{
+  margin-top: 5px !important;
+  width: 200px !important;
+}
+
+.submitButton {
+  display: flex;
+  justify-content: center;
+  color: white;
+  white-space: nowrap;
+  background-color: #31d47d;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 2px;
+  transition: all 150ms ease-out;
 }
